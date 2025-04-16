@@ -1,13 +1,21 @@
 import muon as mu
 import pertpy as pt
 import scanpy as sc
+import numpy as np
 import time
-
+# from scalene import scalene_profiler
 # Load dataset
 mdata = pt.dt.papalexi_2021()
+# rng = np.random.default_rng(42)
+# choice = rng.choice(mdata["rna"].n_obs, size=1000, replace=False)
+# mdata = mdata[choice].copy()
+# mdata.write_h5mu("papalexi_2021_1000.h5mu")
+# mdata = mu.read_h5mu("/Users/eljas.roellin/Documents/pertpy_workspace/pertpy-reproducibility/benchmark/mixscape/papalexi_2021_1000.h5mu")
 
 # Start time
 start_time = time.time()
+
+# scalene_profiler.start()
 
 # Preprocessing
 # RNA
@@ -51,4 +59,4 @@ mixscape_identifier.lda(
 
 # Compute and print elapsed time
 elapsed_time = time.time() - start_time
-print(f"Elapsed time: {elapsed_time} seconds")
+# print(f"Elapsed time: {elapsed_time} seconds")
