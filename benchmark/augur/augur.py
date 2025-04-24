@@ -1,10 +1,12 @@
 import warnings
-
+from time import time
 warnings.filterwarnings("ignore")
 import pertpy as pt
 
 # load data
 adata = pt.dt.sc_sim_augur()
+
+start_time = time()
 ag_rfc = pt.tl.Augur("random_forest_classifier")
 loaded_data = ag_rfc.load(adata)
 
@@ -62,3 +64,5 @@ pvals = ag_rfc.predict_differential_prioritization(
     permuted_results1=bhattacherjee_results_15_permute,
     permuted_results2=bhattacherjee_results_48_permute,
 )
+
+print(f"Time taken: {time() - start_time} seconds")

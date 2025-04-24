@@ -3,7 +3,7 @@ import pertpy as pt
 import scanpy as sc
 import numpy as np
 import time
-# from scalene import scalene_profiler
+from scalene import scalene_profiler
 # Load dataset
 mdata = pt.dt.papalexi_2021()
 # rng = np.random.default_rng(42)
@@ -12,10 +12,17 @@ mdata = pt.dt.papalexi_2021()
 # mdata.write_h5mu("papalexi_2021_1000.h5mu")
 # mdata = mu.read_h5mu("/Users/eljas.roellin/Documents/pertpy_workspace/pertpy-reproducibility/benchmark/mixscape/papalexi_2021_1000.h5mu")
 
+# JIT warmup of PyNNDescent
+# mdata_mini = mdata[np.random.default_rng(42).choice(mdata["rna"].n_obs, size=1000, replace=False)].copy()
+# mixscape_identifier = pt.tl.Mixscape()
+# mixscape_identifier.perturbation_signature(
+#     mdata_mini["rna"], "perturbation", "NT", split_by="replicate", n_neighbors=20, n_dims=40,
+# )
+
 # Start time
 start_time = time.time()
 
-# scalene_profiler.start()
+scalene_profiler.start()
 
 # Preprocessing
 # RNA
@@ -59,4 +66,4 @@ mixscape_identifier.lda(
 
 # Compute and print elapsed time
 elapsed_time = time.time() - start_time
-# print(f"Elapsed time: {elapsed_time} seconds")
+print(f"Elapsed time: {elapsed_time} seconds")
