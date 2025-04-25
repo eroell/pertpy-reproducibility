@@ -3,7 +3,7 @@ import logging
 
 # Setup logging
 logging.basicConfig(
-    filename='logs/cinema_ot_new_10k_nojit.log',
+    filename='logs/20250424cinema_ot_new_10k_nojit.log',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
