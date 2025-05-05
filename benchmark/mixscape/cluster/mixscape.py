@@ -30,7 +30,7 @@ rep = args.rep
 
 # from scalene import scalene_profiler
 print(f"Sampling {n_cells} cells, rep {rep}, commit {commit}")
-print("now on branch main with improved mixscape")
+
 # Load dataset
 mdata = pt.dt.papalexi_2021()
 rng = np.random.default_rng(42)
