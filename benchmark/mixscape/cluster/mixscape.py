@@ -1,7 +1,10 @@
+import time
+
+library_start_time = time.time()
 import cProfile
 import io
 import pstats
-import time
+
 
 import argparse
 import muon as mu
@@ -16,6 +19,8 @@ import numpy as np
 import pertpy as pt
 import scanpy as sc
 import pandas as pd
+
+print(f"Importing libraries took: {time.time() - library_start_time} seconds")
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--n_cells", type=int, default=2000)
