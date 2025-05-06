@@ -12,7 +12,8 @@ import numpy as np
 import pertpy as pt
 import scanpy as sc
 import pandas as pd
-
+# mock import to avoid first time import during perturbation_signature
+from pynndescent import NNDescent
 
 import muon as mu
 import numpy as np

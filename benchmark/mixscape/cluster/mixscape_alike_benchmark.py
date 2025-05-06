@@ -3,7 +3,7 @@ start = time.time()
 from pathlib import Path
 from pertpy.tools import Mixscape
 from scanpy import AnnData, read_h5ad
-
+from pynndescent import NNDescent
 import cProfile
 import io
 import pstats
@@ -18,6 +18,8 @@ profiler.enable()
 
 start_data_read = time.time()
 adata = read_h5ad(input_path)
+adata.X = adata.X.toarray() # this was only added after 35733653
+
 print("Time until data was read: ", time.time() - start_data_read)
 
 # Mitigating confounding effects
@@ -59,6 +61,3 @@ ps = pstats.Stats(profiler, stream=s).sort_stats("cumtime")
 ps.dump_stats(filename="mixscape.prof")
 
 print("Time taken entire script: ", time.time() - start)
-
-if output:
-    Path(output).touch()
